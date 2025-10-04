@@ -166,67 +166,6 @@ section {
   margin-bottom: 1rem;
 }
 
-.schedule {
-  display: grid;
-  gap: 1.25rem;
-}
-
-.schedule__item {
-  padding: 1.5rem;
-  border-radius: 1.25rem;
-  background: #fff;
-  box-shadow: 0 20px 32px rgba(23, 27, 71, 0.08);
-  border-left: 6px solid transparent;
-}
-
-.schedule__item--highlight {
-  border-left-color: var(--accent);
-  background: linear-gradient(135deg, rgba(255, 189, 89, 0.15), rgba(255, 221, 179, 0.45));
-}
-
-.schedule__date {
-  font-weight: 700;
-  font-size: 1.1rem;
-}
-
-.schedule__slots {
-  display: grid;
-  gap: 0.6rem;
-  margin: 1rem 0 0.75rem;
-}
-
-.schedule__slot {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.6rem 0.75rem;
-  border-radius: 0.75rem;
-  background: rgba(108, 79, 255, 0.08);
-  font-weight: 600;
-}
-
-.schedule__slot-label {
-  color: var(--primary);
-}
-
-.schedule__slot-value {
-  color: rgba(31, 31, 61, 0.85);
-}
-
-.schedule__slot--disabled {
-  background: rgba(31, 31, 61, 0.08);
-  color: rgba(31, 31, 61, 0.5);
-}
-
-.schedule__slot--disabled .schedule__slot-value {
-  color: rgba(31, 31, 61, 0.5);
-}
-
-.schedule__note {
-  margin: 0.5rem 0 0;
-  color: rgba(31, 31, 61, 0.75);
-}
-
 .two-column {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -239,6 +178,83 @@ section {
   background: #fff;
   border-radius: 1.5rem;
   box-shadow: 0 16px 30px rgba(23, 27, 71, 0.1);
+}
+
+.curriculum {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.curriculum-card {
+  position: relative;
+  padding: 1.8rem;
+  border-radius: 1.5rem;
+  background: #fff;
+  box-shadow: 0 18px 32px rgba(23, 27, 71, 0.08);
+  overflow: hidden;
+}
+
+.curriculum-card__label {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(108, 79, 255, 0.12);
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.curriculum-card--accent {
+  border: 2px solid rgba(255, 189, 89, 0.6);
+  box-shadow: 0 24px 36px rgba(255, 189, 89, 0.28);
+}
+
+.curriculum-card__note {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: rgba(31, 31, 61, 0.6);
+}
+
+.partner-logo {
+  width: 180px;
+  max-width: 100%;
+  margin-top: 1.2rem;
+  filter: drop-shadow(0 12px 20px rgba(23, 27, 71, 0.15));
+}
+
+.venue-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.venue-card {
+  padding: 2rem;
+  border-radius: 1.5rem;
+  background: #fff;
+  box-shadow: 0 18px 32px rgba(23, 27, 71, 0.08);
+}
+
+.venue-card__list {
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.venue-card__list li {
+  padding: 0.75rem 0.9rem;
+  border-radius: 0.85rem;
+  background: rgba(108, 79, 255, 0.08);
+  font-weight: 600;
+}
+
+.venue-card__list li strong {
+  color: var(--primary);
+  margin-right: 0.35rem;
 }
 
 .testimonial {
@@ -279,6 +295,14 @@ footer {
   .two-column {
     grid-template-columns: 1fr;
   }
+
+  .curriculum {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .venue-cards {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 640px) {
@@ -286,7 +310,8 @@ footer {
     padding: 3rem 1.25rem;
   }
 
-  .features {
+  .features,
+  .curriculum {
     grid-template-columns: 1fr;
   }
 
@@ -294,9 +319,7 @@ footer {
     padding: 3rem 1.25rem 4rem;
   }
 
-  .schedule__slot {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.2rem;
+  .venue-card__list li {
+    font-size: 0.95rem;
   }
 }
