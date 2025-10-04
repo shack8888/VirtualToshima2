@@ -105,12 +105,6 @@ img {
   box-shadow: var(--shadow);
 }
 
-.button--ghost {
-  background: rgba(255, 255, 255, 0.2);
-  color: #fff;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-}
-
 .button:hover {
   transform: translateY(-3px);
 }
@@ -195,6 +189,39 @@ section {
   font-size: 1.1rem;
 }
 
+.schedule__slots {
+  display: grid;
+  gap: 0.6rem;
+  margin: 1rem 0 0.75rem;
+}
+
+.schedule__slot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.75rem;
+  background: rgba(108, 79, 255, 0.08);
+  font-weight: 600;
+}
+
+.schedule__slot-label {
+  color: var(--primary);
+}
+
+.schedule__slot-value {
+  color: rgba(31, 31, 61, 0.85);
+}
+
+.schedule__slot--disabled {
+  background: rgba(31, 31, 61, 0.08);
+  color: rgba(31, 31, 61, 0.5);
+}
+
+.schedule__slot--disabled .schedule__slot-value {
+  color: rgba(31, 31, 61, 0.5);
+}
+
 .schedule__note {
   margin: 0.5rem 0 0;
   color: rgba(31, 31, 61, 0.75);
@@ -265,5 +292,11 @@ footer {
 
   .hero {
     padding: 3rem 1.25rem 4rem;
+  }
+
+  .schedule__slot {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
   }
 }
