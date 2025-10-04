@@ -323,3 +323,46 @@ footer {
     font-size: 0.95rem;
   }
 }
+
+.partners {
+  padding: 4rem 1.5rem;
+  background: rgba(108, 79, 255, 0.06);
+  text-align: center;
+}
+
+.partner-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.partner-logos__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.5rem 1.75rem;
+  border-radius: 1.25rem;
+  background: #fff;
+  box-shadow: 0 16px 28px rgba(23, 27, 71, 0.08);
+}
+
+.partner-logos__item figcaption {
+  font-weight: 600;
+  color: rgba(31, 31, 61, 0.72);
+}
+
+.partners__note {
+  margin-top: 1.75rem;
+  color: rgba(31, 31, 61, 0.6);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 640px) {
+  .partner-logos__item {
+    width: 100%;
+  }
+}
