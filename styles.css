@@ -355,11 +355,6 @@ footer {
   color: rgba(31, 31, 61, 0.72);
 }
 
-.partners__note {
-  margin-top: 1.75rem;
-  color: rgba(31, 31, 61, 0.6);
-  font-size: 0.95rem;
-}
 
 @media (max-width: 640px) {
   .partner-logos__item {
