@@ -257,6 +257,12 @@ section {
   box-shadow: 0 18px 32px rgba(23, 27, 71, 0.08);
 }
 
+
+.venue-card__address {
+  margin: 0.35rem 0 0.75rem;
+  font-size: 0.95rem;
+  color: rgba(31, 31, 61, 0.7);
+}
 .venue-card__list {
   margin: 1rem 0 0;
   padding: 0;
