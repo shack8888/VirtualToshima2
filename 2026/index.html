@@ -314,6 +314,20 @@
   .rv.show{opacity:1;transform:none}
   .rv-d1{transition-delay:.08s}.rv-d2{transition-delay:.16s}.rv-d3{transition-delay:.24s}
   @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+  /* ---- lightbox (写真クリックで拡大) ---- */
+  .ph{cursor:zoom-in}
+  .lb{position:fixed;inset:0;z-index:120;display:none;align-items:center;justify-content:center;
+    padding:clamp(16px,4vw,48px);background:rgba(28,22,16,.86);backdrop-filter:blur(4px);
+    opacity:0;transition:opacity .25s var(--ease)}
+  .lb.show{display:flex;opacity:1}
+  .lb img{max-width:100%;max-height:100%;border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.5);
+    cursor:zoom-out;transform:scale(.97);transition:transform .25s var(--ease)}
+  .lb.show img{transform:scale(1)}
+  .lb-close{position:absolute;top:clamp(12px,3vw,26px);right:clamp(12px,3vw,26px);width:46px;height:46px;
+    border:none;border-radius:50%;background:rgba(255,255,255,.92);color:var(--ink);font-size:24px;line-height:1;
+    cursor:pointer;box-shadow:var(--shadow-sm);display:grid;place-items:center;transition:.2s var(--ease)}
+  .lb-close:hover{transform:scale(1.08);background:#fff}
 </style>
 </head>
 <body>
@@ -619,6 +633,12 @@
   </div>
 </footer>
 
+<!-- ============ ライトボックス（写真拡大） ============ -->
+<div class="lb" id="lb" aria-hidden="true">
+  <button class="lb-close" id="lbClose" aria-label="閉じる">×</button>
+  <img id="lbImg" src="" alt="">
+</div>
+
 <script>
   const nav=document.getElementById('nav');
   const onScroll=()=>{ nav.classList.toggle('scrolled', window.scrollY>40); };
@@ -627,6 +647,20 @@
     es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); } });
   },{threshold:.12, rootMargin:'0px 0px -8% 0px'});
   document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+  // 写真クリックで拡大（ライトボックス）
+  const lb=document.getElementById('lb'), lbImg=document.getElementById('lbImg');
+  const openLB=(src,alt)=>{ lbImg.src=src; lbImg.alt=alt||''; lb.classList.add('show');
+    lb.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; };
+  const closeLB=()=>{ lb.classList.remove('show'); lb.setAttribute('aria-hidden','true');
+    document.body.style.overflow=''; setTimeout(()=>{ if(!lb.classList.contains('show')) lbImg.src=''; },250); };
+  document.querySelectorAll('.ph img').forEach(img=>{
+    img.style.cursor='zoom-in';
+    img.addEventListener('click',()=>openLB(img.currentSrc||img.src,img.alt));
+  });
+  lb.addEventListener('click',closeLB);
+  document.getElementById('lbClose').addEventListener('click',closeLB);
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeLB(); });
 </script>
 </body>
 </html>
